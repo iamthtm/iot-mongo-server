@@ -1,8 +1,8 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
-var Model = require('./models/iot/iot.js')
-var iot = require('./models/iot/iot.js')
+var Model = require('./models/iot.js')
+var iot = require('./models/iot.js')
 mongoose.connect('mongodb://localhost/iot')
 
 var app = express()
@@ -35,18 +35,6 @@ app.get('/', function (req, res) {
   })
 })
 
-/*app.delete('/api/iot/:id', function (req, res){
-      return iot.findById(req.params.id, function (err, iot) {
-        return iot.remove(function (err) {
-          if (!err) {
-            console.log("removed")
-            return res.send('')
-          } else {
-            console.log(err)
-          }
-        })
-      })
-})*/
 
 app.listen(3000)
 console.log('run in 3000')
