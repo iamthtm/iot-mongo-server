@@ -11,7 +11,8 @@
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "mongoose": "^4.2.3",
-    "node-restful": "^0.2.2"
+    "node-restful": "^0.2.2",
+    "unirest": "^0.4.2"
   },
   "devDependencies": {},
   "repository": {
