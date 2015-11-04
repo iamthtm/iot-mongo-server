@@ -3,7 +3,6 @@ angular.module('todoApp', [])
     var todoList = this;
     
     getiot()
-    
     var count = 0
     $interval(function () 
     {
