@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 
 app.use('/api', require('./route/api'))
 
-app.use('/', require('./route/api.js'))
+app.use('/', require('./routel/api.js'))
 
 
 app.listen(3000)
