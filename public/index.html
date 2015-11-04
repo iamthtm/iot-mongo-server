@@ -15,7 +15,7 @@
   <body ng-controller="TodoListController as todoList">
 			<div class="container">
 		  		<div class="row"> 
-		  		<div class="col-md-4">
+		  		<div class="col-md-2">
 			  	<form ng-submit="todoList.submit(input)">
 				  	<h5>iot_id</h5>
 			      	<input type="text" class="form-control" ng-model="input.iot_id"/>
@@ -32,39 +32,31 @@
 
 			      </form>
 					</div>		
-			    		  		<div class="col-md-8">		
+			    <div class="col-md-10">		
 					<table>
 				<thead>
 			      <tr>
 			        <th class="col-sm-1">No.</th>
-			        <th class="col-sm-1">IoT ID</th>
+			        <th class="col-sm-1">IDIoT</th>
 			        <th class="col-sm-1">Temperature</th>
-				    <th class="col-sm-2">Relative Humidity</th>
-				    <th class="col-sm-1">Date</th>
-			         <th class="col-sm-2">Delete</th>
+				    <th class="col-sm-4">Relative Humidity</th>
+				    <th class="col-sm-4">Date</th>
+			         <th class="col-sm-1">Delete</th>
 
 			      </tr>
 			    </thead>
 			    <tbody>
 			    	<tr ng-repeat="show in todoList.dataiot">
 			    		<td class="col-sm-1">{{$index}}</td>
-				  		<td class="col-sm-2">{{show.iot_id}}</td>
-				  		<td class="col-sm-1">{{show.temperature}}</td>
+				  		<td class="col-sm-1">{{show.iot_id}}</td>
+				  		<td class="col-sm-">{{show.temperature}}</td>
 				  		
-				  		<td class="col-sm-1">{{show.relative_humidity}}</td>
+				  		<td class="col-sm-3">{{show.relative_humidity}}</td>
 				  		<td class="col-sm-5">{{todoList.toThaiDateTime(show.timestamp)}}</td>
 				  		<td class="col-sm-1"><button class="btn-dange glyphicon glyphicon-eject " ng-click="todoList.deleteiot(show._id,$index)"></button></td>	
 				  	</tr>
 			    </tbody>
-			  </table>
-					  
-						
-
-			      
-
-
-
-				  
+			  </table>		  
 					
 </div>
 				</div>
