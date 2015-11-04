@@ -22,9 +22,17 @@
   	<div class="row">
 
 	  <div class="col-md-4 col-md-offset-2">
-	  	<!--{{todoList.name}}-->
 
 	  	<form ng-submit="todoList.adduser(input)">
+
+
+	  		<h5>name</h5>
+	      	<input type="text" class="form-control" ng-model="input.name"/>
+	      	<br>
+
+	  		<h5>surname</h5>
+	      	<input type="text" class="form-control" ng-model="input.surname"/>
+	      	<br>
 
 	  		<h5>username</h5>
 	      	<input type="text" class="form-control" ng-model="input.username"/>
@@ -32,7 +40,6 @@
 
 		  	<h5>password</h5>
 	      	<input type="text" class="form-control" ng-model="input.password"/>
-	      	<br>
 	      	<br>
 
 	      	<center>

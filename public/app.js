@@ -2,9 +2,14 @@ angular.module('todoApp', [])
   .controller('TodoListController', function($http) {
     var app = this;
       
-    app.name = "koy"
+    app.name = "PING"
 
       getIot()
+
+
+      app.toThaiDateTime = function (date) {
+      return moment(date).format('MMMM Do YYYY, h:mm:ss a')
+    }
 
         app.submit = function(input){
           saveIot(input)
@@ -94,7 +99,20 @@ angular.module('todoApp', [])
 
 
 
+//ลบ
 
+app.deleteiot = function (id, index) {       
+  console.log(id)       
+  $http.delete('/api/iot/' + id)         
+  .success(function (data) {           
+    alert('delete')           
+    app.dataiot.splice(index, 1)         
+  })         
+  .error(function (data) {           
+    alert('error')           
+    console.log('Error: ' + data)         
+  })     
+}
 
 
 
