@@ -10,18 +10,16 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
 	<script src="app.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+  
   </head>
 
   <body ng-controller="TodoListController as todoList">
-
+	<div class="container">
   	<div class="row">
- 		<canvas id="p" width="1000" height="500"></canvas>
-	  	<form ng-submit="todoList.addiot(input)">
+ 		
+	  	<form ng-submit="todoList.submit(input)">
 
-	  		<h5>timestamp</h5>
-	      	<input type="text" class="form-control" ng-model="input.timestamp"/>
-	      	<br>
+	  		
 
 		  	<h5>iot_id</h5>
 	      	<input type="text" class="form-control" ng-model="input.iot_id"/>
@@ -44,7 +42,8 @@
 	      <hr>
 	      
 	      <hr>
-	      	<div ng-repeat="show in todoList.iot">
+
+	      	<div ng-repeat="show in todoList.dataiot">
 		     	timestamp : {{show.timestamp}}
 		     	<br>
 		     	iot_id : {{show.iot_id}}
@@ -56,10 +55,12 @@
 		     	<button class="btn btn-danger glyphicon glyphicon-remove " ng-click="todoList.deleteiot(data._id)"></button>
 		     	<hr>
 			</div>
+			<!-- {{todoList.dataiot}} -->
 
 		</div>
 
 	</div>
+</div>
       
   </body>
 </html>
