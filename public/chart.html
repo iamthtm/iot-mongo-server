@@ -38,12 +38,15 @@
 					</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
 				</nav>
-				<div class="container" ng-init="todoList.graph()">
+				<div class="container" ng-init="todoList.showGraph()">
 					REPORT
 					<br>
 					<br>
 					<div class="graph">
-						<canvas id="iot" width="1100" height="400"></canvas>
+    				    <!-- bar chart canvas element -->
+      				  <canvas id="iotTem" width="600" height="400"></canvas>      
+      				  <canvas id="iotHu" width="600" height="400"></canvas>
+
 					</div>
 				</div>
 				
