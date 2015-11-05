@@ -11,6 +11,10 @@ var app = express()
 	app.use(bodyParser.urlencoded({extended: true}))
 	app.use(bodyParser.json())
 	app.use('/', require('./route/api.js'))
+
+	app.use('/', require('./route/memberapi.js'))
+	
+
 //Del
 	app.delete('/api/iot/:id', function (req, res) {
 		Model.findById(req.params.id, function (err, Model) {

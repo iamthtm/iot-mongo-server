@@ -37,9 +37,9 @@ angular.module('todoApp', [])
       }
 
 
-
+//graph
 app.graph = function(){        
-  onsole.log("graph working") 
+  
     $http.get('/api/iot')
       .then(function success (response) {
         console.log(sessionStorage.testSes)
@@ -95,7 +95,40 @@ app.deleteiot = function (id, index) {
   })     
 }
 
+//register
 
+ app.adduser = function(data) {
+  console.log(data);
+        $http.post('/api/member', data)
+          .then(function success (response) {
+            console.log(response)
+            alert('Success')
+          }, function error (response) {
+            alert(response.data.message)
+        })
+      }
+
+//login
+
+app.login = function(input){
+  // console.log(data);
+  $http.post('/login' , { username : input.username , password : input.password})
+       .then(function success (response) {
+            console.log(response.data[0].username)
+            if((input.username== response.data[0].username)&&(input.password == response.data[0].password)){
+              console.log("have user ");
+              
+              window.location= "chart.html"
+            }else{
+              window.location="login.html"
+            }
+
+            app.d = response.data
+          }, function error (response) {
+            alert(response.data.message)
+        })
+
+}
 
 
   });
