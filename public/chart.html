@@ -24,16 +24,39 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html">.... INTERNET OF THINK .... </a>
+					<a class="navbar-brand" href="index.html">.... INTERNET OF THING .... </a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="login.html">Report</a></li>
+						<li><a href="#">Report</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="register.html">Register</a></li>
-						<li><a href="login.html">Login</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
+							<ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+								<li>
+									<div class="row">
+										<div class="col-md-12">
+											<form ng-submit="todoList.login(input)">
+												<div class="form-group">
+													Username<input type="text" class="form-control" ng-model="input.username"/>
+												</div>
+												<div class="form-group">
+													<h5>Password</h5>
+													<input type="text" class="form-control" ng-model="input.password"/>
+												</div>
+												
+												<div class="form-group">
+													<button type="submit" class="btn btn-success btn-block glyphicon glyphicon-ok-sign">  Sign in</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</li>
 					</ul>
 					</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
@@ -44,8 +67,7 @@
 					<br>
 					<div class="graph">
     				    <!-- bar chart canvas element -->
-      				  <canvas id="iotTem" width="600" height="400"></canvas>      
-      				  <canvas id="iotHu" width="600" height="400"></canvas>
+      				  <canvas id="iotTem" width="1000" height="400"></canvas>      
 
 					</div>
 				</div>

@@ -16,61 +16,83 @@
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html">.... INTERNET OF THINK .... </a>
+					<a class="navbar-brand" href="index.html">.... INTERNET OF THING .... </a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="login.html">Report</a></li>
+						<li><a href="">Report</a></li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right">					
+					<ul class="nav navbar-nav navbar-right">
 						<li><a href="register.html">Register</a></li>
-						<li><a href="login.html">Login</a></li>
+						<!-- <li><a href="login.html">Login</a></li> -->
+					<!-- login  -->
+						<li class="dropdown" id = "login">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
+							<ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+								<li>
+									<div class="row">
+										<div class="col-md-12">
+											<form ng-submit="todoList.login(input)">
+												<div class="form-group">
+													<h5>Username</h5>
+													<input type="text" class="form-control" ng-model="input.username"/>
+												</div>
+												<div class="form-group">
+													<h5>Password</h5>
+													<input type="text" class="form-control" ng-model="input.password"/>
+												</div>
+												
+												<div class="form-group">
+													<button type="submit" class="btn btn-success btn-block glyphicon glyphicon-ok-sign">  Sign in</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</li>
 					</ul>
-				</div><!-- /.navbar-collapse -->
-			</div><!-- /.container-fluid -->
-		</nav>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-5">
-						<form ng-submit="todoList.submit(input)">
-							<h5>Iot_ID</h5>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+				</nav>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-5">
+							<form ng-submit="todoList.submit(input)">
+								<h5>Iot_ID</h5>
 								<input type="text"  class="form-control" ng-model="input.iot_id"/>
-							<br>
-							<h5>Temperature</h5>
+								<br>
+								<h5>Temperature</h5>
 								<input type="text"  class="form-control" ng-model="input.temperature"/>
-							<br>
-							<h5>Relative_humidity</h5>
+								<br>
+								<h5>Relative_humidity</h5>
 								<input type="text"  class="form-control" ng-model="input.relative_humidity"/>
-  							<br>
-							<center><button type="submit" class="btn btn-primary btn-lg glyphicon glyphicon-plus"> Add </button></center>
-						</form>
-					</div>
-					<div class="col-md-7">
-						<table class="table table-hover" >
-							<thead >
-								<tr align="center" >
-										<th class="col-sm-1" >No.</th>
-										<th class="col-sm-1" >Iot_ID</th>
-										<th class="col-sm-1" >Temperature</th>
-										<th class="col-sm-2" >Relative Humidity</th>
-										<th class="col-sm-2" >Date</th>
-										<th class="col-sm-1" >Delete</th>
+								<br>
+								<center><button type="submit" class="btn btn-primary btn-lg glyphicon glyphicon-plus"> Add </button></center>
+							</form>
+						</div>
+						<div class="col-md-7">
+							<table class="table table-hover" >
+								<thead >
+									<tr align="center" >
+										<td>No.</td>
+										<td>Iot_ID</td>
+										<td>Temperature</td>
+										<td>Relative Humidity</td>
+										<td>Date</td>
+										<td>Delete</td>
 									</tr>
 								</thead>
 								<tbody>
 									<tr align="center"  ng-repeat="show in todoList.dataiot" >
-										<td class="col-sm-1" >{{$index}}</td>
-										<td class="col-sm-1">{{show.iot_id}}</td>
-										<td class="col-sm-1">{{show.temperature}}</td>
-										<td class="col-sm-2">{{show.relative_humidity}}</td>
-										<td class="col-sm-2">{{todoList.toThaiDateTime(show.timestamp)}}</td>
-										<td class="col-sm-1"><button class="btn btn-danger glyphicon glyphicon-eject " ng-click="todoList.deleteiot(show._id,$index)"></button></td>
+										<td>{{$index}}</td>
+										<td>{{show.iot_id}}</td>
+										<td>{{show.temperature}}</td>
+										<td>{{show.relative_humidity}}</td>
+										<td>{{todoList.toThaiDateTime(show.timestamp)}}</td>
+										<td><button class="btn btn-danger glyphicon glyphicon-eject " ng-click="todoList.deleteiot(show._id,$index)"></button></td>
 									</tr>
 								</tbody>
 							</table>
@@ -79,4 +101,3 @@
 			</div>
 	</body>
 </html>
-

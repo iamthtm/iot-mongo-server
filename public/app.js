@@ -40,69 +40,89 @@ angular.module('todoApp', [])
 //graph
 app.showGraph = function(){
     app.graphTem()
-    app.graphHu()
-
 
 }
 app.graphTem = function(){
       console.log("graph working") 
       $http.get('/api/iot')
               .then(function success (response) {
-                var tem1min = 20 , tem1max = 20,tem1avg = 0 , c1=0
-                var tem2min = 20 , tem2max = 20,tem2avg = 0 , c2=0
-                var tem3min = 20 , tem3max = 20,tem3avg = 0 , c3=0
-                var tem4min = 20 , tem4max = 20,tem4avg = 0 , c4=0
-                var tem5min = 20 , tem5max = 20,tem5avg = 0 , c5=0
-                var tem6min = 20 , tem6max = 20,tem6avg = 0 , c6=0
-                var tem7min = 20 , tem7max = 20,tem7avg = 0 , c7=0
-                var tem8min = 20 , tem8max = 20,tem8avg = 0 , c8=0
-                var tem9min = 20 , tem9max = 20,tem9avg = 0 , c9=0
-                var tem10min = 20 , tem10max = 20,tem10avg = 0 , c10=0
+                //ประกาศเก็บค่าวนรอบและค่าtem
+                var tem1avg = 0 , c1=0
+                var tem2avg = 0 , c2=0
+                var tem3avg = 0 , c3=0
+                var tem4avg = 0 , c4=0
+                var tem5avg = 0 , c5=0
+                var tem6avg = 0 , c6=0
+                var tem7avg = 0 , c7=0
+                var tem8avg = 0 , c8=0
+                var tem9avg = 0 , c9=0
+                var tem10avg = 0 , c10=0
+                //ประกาศเก็บเฉลี่ยhu
+                var hu1avg = 0 
+                var hu2avg = 0 
+                var hu3avg = 0 
+                var hu4avg = 0 
+                var hu5avg = 0 
+                var hu6avg = 0 
+                var hu7avg = 0 
+                var hu8avg = 0 
+                var hu9avg = 0 
+                var hu10avg = 0 
                
                 for(var i =0;i<response.data.length;i++){
                       if(response.data[i].iot_id ==0){
                         tem1avg = tem1avg + response.data[i].temperature
+                        hu1avg = hu1avg + response.data[i].relative_humidity
                         c1 = c1+ 1 
                       }
                         if(response.data[i].iot_id ==1){
-                        tem2avg = tem2avg + response.data[i].temperature
+                        tem2avg = tem2avg + response.data[i].temperature                        
+                        hu2avg = hu2avg + response.data[i].relative_humidity
+
                         c2 = c2+ 1
                       }
                         if(response.data[i].iot_id ==2){
                         tem3avg = tem3avg + response.data[i].temperature
+                        hu3avg = hu3avg + response.data[i].temperature
                         c3 = c3+ 1
                       }
                         if(response.data[i].iot_id ==3){
                         tem4avg = tem4avg + response.data[i].temperature
+                        hu4avg = hu4avg + response.data[i].relative_humidity
+
                         c4 = c4+ 1
                       }
                         if(response.data[i].iot_id ==4){
-                        tem5avg = tem5avg + response.data[i].temperature
+                        tem5avg = tem5avg + response.data[i].temperature                        
+                        hu5avg = hu5avg + response.data[i].relative_humidity
+
                         c5 = c5+ 1
                       }
                         if(response.data[i].iot_id ==5){
                         tem6avg = tem6avg + response.data[i].temperature
+                        hu6avg = hu6avg + response.data[i].relative_humidity
                         c6 = c6+ 1
                       }
                       if(response.data[i].iot_id ==6){
                         tem7avg = tem7avg + response.data[i].temperature
+                        hu7avg = hu7avg + response.data[i].relative_humidity
                         c7 = c7+ 1
                       }
                       if(response.data[i].iot_id ==7){
                         tem8avg = tem8avg + response.data[i].temperature
+                        hu8avg = hu8avg + response.data[i].relative_humidity
                         c8 = c8+ 1
                       }
                        if(response.data[i].iot_id ==8){
                         tem9avg = tem9avg + response.data[i].temperature
+                        hu9avg = hu9avg + response.data[i].relative_humidity
                         c9 = c9+ 1
                       }
                       if(response.data[i].iot_id == 9){
                         tem10avg = tem10avg + response.data[i].temperature
+                        hu10avg = hu10avg + response.data[i].relative_humidity
                         c10 = c10+ 1
                       }
-                        
-                        
-                      
                 }
                 tem1avg = tem1avg/c1
                 tem2avg = tem2avg/c2
@@ -114,117 +134,7 @@ app.graphTem = function(){
                 tem8avg = tem8avg/c8
                 tem9avg = tem9avg/c9
                 tem10avg = tem10avg/c10
-                console.log(tem2avg,tem2min,tem2max);
-            // bar chart data
-            var barData = {
-                labels : ["IoT-0","IoT-1","IoT-2","IoT-3","IoT-4","IoT-5","IoT-6","IoT-7","IoT-8",'IoT-9'],
-                datasets : [
-                   
-                    {
-                        fillColor : "rgba(73,188,170,0.4)",
-                        strokeColor : "rgba(72,174,209,0.4)",
-                        data : [tem1avg,tem2avg,tem3avg,tem4avg,tem5avg,tem6avg,tem7avg,tem8avg,tem9avg,tem10avg]
-                    }
-                   
-                ]
-            }
-            // get bar chart canvas
-            var iot = document.getElementById("iotTem").getContext("2d");
-            // draw bar chart
-            new Chart(iot).Bar(barData);
 
-           
-
-        })
-                 
-      
-    }
-//hu
-app.graphHu = function(){
-             
-      console.log("graph working") 
-      $http.get('/api/iot')
-              .then(function success (response) {
-                var hu1min = 20 , hu1max = 20,hu1avg = 0 , c1=0
-                var hu2min = 20 , hu2max = 20,hu2avg = 0 , c2=0
-                var hu3min = 20 , hu3max = 20,hu3avg = 0 , c3=0
-                var hu4min = 20 , hu4max = 20,hu4avg = 0 , c4=0
-                var hu5min = 20 , hu5max = 20,hu5avg = 0 , c5=0
-                var hu6min = 20 , hu6max = 20,hu6avg = 0 , c6=0
-                var hu7min = 20 , hu7max = 20,hu7avg = 0 , c7=0
-                var hu8min = 20 , hu8max = 20,hu8avg = 0 , c8=0
-                var hu9min = 20 , hu9max = 20,hu9avg = 0 , c9=0
-                var hu10min = 20 , hu10max = 20,hu10avg = 0 , c10=0
-               
-                for(var i =0;i<response.data.length;i++){
-                      if(response.data[i].iot_id ==0){
-                        hu1avg = hu1avg + response.data[i].relative_humidity
-                        c1 = c1+ 1
-                      }
-                        if(response.data[i].iot_id ==1){
-                        hu2avg = hu2avg + response.data[i].relative_humidity
-                        c2 = c2+ 1
-                      }
-                        if(response.data[i].iot_id ==2){
-                        hu3avg = hu3avg + response.data[i].temperature
-                        c3 = c3+ 1
-                      }
-                        if(response.data[i].iot_id ==3){
-                        hu4avg = hu4avg + response.data[i].relative_humidity
-                        c4 = c4+ 1
-                      }
-                        if(response.data[i].iot_id ==4){
-                        hu5avg = hu5avg + response.data[i].relative_humidity
-                        c5 = c5+ 1
-                            
-
-                            if(hu5min >  response.data[i].relative_humidity) hu5min = response.data[i].relative_humidity
-                            if(hu5max <  response.data[i].relative_humidity) hu5max = response.data[i].relative_humidity
-                        }
-                        if(response.data[i].iot_id ==5){
-                        hu6avg = hu6avg + response.data[i].relative_humidity
-                        c6 = c6+ 1
-                            
-
-                            if(hu6min >  response.data[i].relative_humidity) hu6min = response.data[i].relative_humidity
-                            if(hu6max <  response.data[i].relative_humidity) hu6max = response.data[i].relative_humidity
-                        }
-                      if(response.data[i].iot_id ==6){
-                        hu7avg = hu7avg + response.data[i].relative_humidity
-                        c7 = c7+ 1
-                            
-
-                            if(hu7min >  response.data[i].relative_humidity) hu7min = response.data[i].relative_humidity
-                            if(hu7max <  response.data[i].relative_humidity) hu7max = response.data[i].relative_humidity
-                        }
-                      if(response.data[i].iot_id ==7){
-                        hu8avg = hu8avg + response.data[i].relative_humidity
-                        c8 = c8+ 1
-                            
-
-                            if(hu8min >  response.data[i].relative_humidity) hu8min = response.data[i].relative_humidity
-                            if(hu8max <  response.data[i].relative_humidity) hu8max = response.data[i].relative_humidity
-                        }
-                       if(response.data[i].iot_id ==8){
-                        hu9avg = hu9avg + response.data[i].relative_humidity
-                        c9 = c9+ 1
-                            
-
-                            if(hu9min >  response.data[i].relative_humidity) hu9min = response.data[i].relative_humidity
-                            if(hu9max <  response.data[i].relative_humidity) hu9max = response.data[i].relative_humidity
-                        }
-                      if(response.data[i].iot_id == 9){
-                        hu10avg = hu10avg + response.data[i].relative_humidity
-                        c10 = c10+ 1
-                            
-
-                            if(hu10min >  response.data[i].relative_humidity) hu10min = response.data[i].relative_humidity
-                            if(hu10max <  response.data[i].relative_humidity) hu10max = response.data[i].relative_humidity
-                        }
-                        
-                        
-                      
-                }
                 hu1avg = hu1avg/c1
                 hu2avg = hu2avg/c2
                 hu3avg = hu3avg/c3
@@ -235,22 +145,35 @@ app.graphHu = function(){
                 hu8avg = hu8avg/c8
                 hu9avg = hu9avg/c9
                 hu10avg = hu10avg/c10
-                console.log(hu1min,hu2min);
+
+
             // bar chart data
             var barData = {
                 labels : ["IoT-0","IoT-1","IoT-2","IoT-3","IoT-4","IoT-5","IoT-6","IoT-7","IoT-8",'IoT-9'],
                 datasets : [
+                   
+                    {
+                        fillColor : "rgba(50,50,50,0.4)",
+                        strokeColor : "rgba(72,174,209,0.4)",
+                        data : [tem1avg,tem2avg,tem3avg,tem4avg,tem5avg,tem6avg,tem7avg,tem8avg,tem9avg,tem10avg],
+                    },
                     {
                         fillColor : "rgba(73,188,170,0.4)",
                         strokeColor : "rgba(72,174,209,0.4)",
                         data : [hu1avg,hu2avg,hu3avg,hu4avg,hu5avg,hu6avg,hu7avg,hu8avg,hu9avg,hu10avg]
                     }
+
+                   
                 ]
             }
             // get bar chart canvas
-            var iot = document.getElementById("iotHu").getContext("2d");
+            var iot = document.getElementById("iotTem").getContext("2d");
             // draw bar chart
             new Chart(iot).Bar(barData);
+
+
+
+           
 
         })
                  
