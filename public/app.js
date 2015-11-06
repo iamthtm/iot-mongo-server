@@ -1,19 +1,20 @@
 angular.module('todoApp', [])
   .controller('TodoListController', function($http) {
     var app = this;
-      
+      //test
     app.name = "PING"
+      //เรียนไฟล์ข้อมูล
       getIot()
-
+      //อัพเดจเวลาอันตโนมัตห
       app.toThaiDateTime = function (date) {
       return moment(date).format('MMMM Do YYYY, h:mm:ss a')
     }
-
+        //add data 
         app.submit = function(input){
           saveIot(input)
           //console.log(input)
         }
-
+          //เรียกดูข้มูล
          function getIot(){
          $http.get('/api/iot'). success(function(response) {
             app.dataiot = response
@@ -24,7 +25,7 @@ angular.module('todoApp', [])
             console.log('error')
           });
         }
-
+        //save data
        function saveIot(data) {
         $http.post('/api/iot', data)
           .then(function success (response) {
@@ -68,7 +69,7 @@ app.graphTem = function(){
                 var hu8avg = 0 
                 var hu9avg = 0 
                 var hu10avg = 0 
-               
+               //วนนับรอบกับเอาข้าในแต่ละรอบม่บวกกัน
                 for(var i =0;i<response.data.length;i++){
                       if(response.data[i].iot_id ==0){
                         tem1avg = tem1avg + response.data[i].temperature
@@ -124,6 +125,7 @@ app.graphTem = function(){
                         c10 = c10+ 1
                       }
                 }
+                //หาค่าเฉลี่ยของแต่ละตัว
                 tem1avg = tem1avg/c1
                 tem2avg = tem2avg/c2
                 tem3avg = tem3avg/c3
@@ -147,14 +149,14 @@ app.graphTem = function(){
                 hu10avg = hu10avg/c10
 
 
-            // bar chart data
+            // bar chart data show data
             var barData = {
                 labels : ["IoT-0","IoT-1","IoT-2","IoT-3","IoT-4","IoT-5","IoT-6","IoT-7","IoT-8",'IoT-9'],
                 datasets : [
                    
                     {
-                        fillColor : "rgba(50,50,50,0.4)",
-                        strokeColor : "rgba(72,174,209,0.4)",
+                        fillColor : "rgba(255,193,193,0.4)",
+                        strokeColor : "rgba(205,85,85,0.4)",
                         data : [tem1avg,tem2avg,tem3avg,tem4avg,tem5avg,tem6avg,tem7avg,tem8avg,tem9avg,tem10avg],
                     },
                     {
@@ -166,6 +168,7 @@ app.graphTem = function(){
                    
                 ]
             }
+            
             // get bar chart canvas
             var iot = document.getElementById("iotTem").getContext("2d");
             // draw bar chart

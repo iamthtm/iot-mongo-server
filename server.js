@@ -10,8 +10,11 @@ var app = express()
 	app.use(express.static('public'))
 	app.use(bodyParser.urlencoded({extended: true}))
 	app.use(bodyParser.json())
-	app.use('/', require('./route/api.js'))
 
+	//เรียกไฟล์api
+	app.use('/', require('./route/api.js'))
+	
+	//เรียกไฟล์member
 	app.use('/', require('./route/memberapi.js'))
 	
 
